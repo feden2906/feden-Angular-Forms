@@ -1,0 +1,24 @@
+<div class="fullUserWrapper">
+  <h2 class="center">{{fullUser.name}}</h2>
+  <p><b>username:</b> {{fullUser.username}}</p>
+  <p><b>email:</b> {{fullUser.email}}</p>
+  <p><b>address:</b></p>
+  <p class="ml20"><b>street:</b> {{fullUser.address.street}}</p>
+  <p class="ml20"><b>suite:</b> {{fullUser.address.suite}}</p>
+  <p class="ml20"><b>city:</b> {{fullUser.address.city}}</p>
+  <p class="ml20"><b>zipcode:</b> {{fullUser.address.zipcode}}</p>
+  <p class="ml20"><b>location:</b></p>
+  <p class="ml40"><b>lat:</b> {{fullUser.address.geo.lat}}</p>
+  <p class="ml40"><b>lng:</b> {{fullUser.address.geo.lng}}</p>
+  <p><b>phone:</b> {{fullUser.phone}}</p>
+  <p><b>website:</b> {{fullUser.website}}</p>
+  <p><b>company:</b></p>
+  <p class="ml20"><b>name:</b> {{fullUser.company.name}}</p>
+  <p class="ml20"><b>catchPhrase:</b> {{fullUser.company.catchPhrase}}</p>
+  <p class="ml20"><b>bs:</b> {{fullUser.company.bs}}</p>
+
+  <div class="btnWrapper">
+    <button (click)="editUserInfo()" class="userFullBtnEdit">edit info</button>
+    <button (click)="closeInfo()" class="userFullBtnRed">close</button>
+  </div>
+</div>

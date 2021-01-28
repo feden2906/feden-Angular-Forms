@@ -1,0 +1,39 @@
+.fullUserWrapper {
+background-color: #ffc0c0;
+  padding: 30px 40px;
+}
+.center {text-align: center;}
+.ml20 {margin-left: 20px;}
+.ml40 {margin-left: 40px;}
+.mt10 {margin-top: 10px;}
+
+
+
+/*Buttons*/
+.btnWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+/*Button close full user*/
+.userFullBtnRed {
+  min-width: 100px;
+  height: 35px;
+  margin: 0 5px;
+  background-color: indianred;
+}
+.userFullBtnRed:hover {
+  cursor: pointer;
+  background-color: #8b2222;
+}
+/*Button edit user info*/
+.userFullBtnEdit {
+  min-width: 100px;
+  height: 35px;
+  margin: 0 5px;
+  background-color: #9f9562;
+}
+.userFullBtnEdit:hover {
+  cursor: pointer;
+  background-color: #8b7a22;
+}

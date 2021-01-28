@@ -1,7 +1,21 @@
-.error {
-  border: 1px solid red;
-  color: red;
+.wrapper {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  min-height: 100vh;
+  padding: 30px 0;
+  background-color: #ffdddd;
 }
-.errorMsg {
-  color: red;
+
+.w50 {
+  min-width: 43%;
+  max-width: 43%;
 }
+
+/*.error {*/
+/*  border: 1px solid red;*/
+/*  color: red;*/
+/*}*/
+/*.errorMsg {*/
+/*  color: red;*/
+/*}*/

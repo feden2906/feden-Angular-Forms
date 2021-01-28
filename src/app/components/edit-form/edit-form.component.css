@@ -1,0 +1,48 @@
+.formWrapper {
+  background-color: #ffc0c0;
+  padding: 30px 40px;
+}
+.labelEdit {
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+}
+.labelEdit>input {
+  width: 65%;
+  height: 21px;
+}
+.ml20 {margin-left: 20px;}
+.ml40 {margin-left: 40px;}
+.mt10 {margin-top: 10px;}
+
+
+
+/*Buttons*/
+.btnWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+/*Button close full user*/
+.userFullBtnRed {
+  min-width: 100px;
+  height: 35px;
+  margin: 0 5px;
+  background-color: indianred;
+}
+.userFullBtnRed:hover {
+  cursor: pointer;
+  background-color: #8b2222;
+}
+/*Button show posts from full user*/
+.userFullBtnGreen {
+  min-width: 100px;
+  height: 35px;
+  margin: 0 5px;
+  background-color: #629f62;
+}
+.userFullBtnGreen:hover {
+  cursor: pointer;
+  background-color: forestgreen;
+}
+

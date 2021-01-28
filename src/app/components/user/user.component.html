@@ -1,0 +1,6 @@
+
+<div class="user" [class.chosenUser]="chosenUser?.id === user.id && editFlag" >
+  <h3>{{user.name}}</h3>
+  <input *ngIf="chosenUser?.id !== user.id"
+         (click)="clickOnUser()" [disabled]="editFlag" type="button" class="btnInfo" value="info"/>
+</div>

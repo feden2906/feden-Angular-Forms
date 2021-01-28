@@ -1,0 +1,7 @@
+<div>
+  <app-user *ngFor="let user of users"
+            (bubbleUp)="getChosenUser($event)"
+            [chosenUser]="chosenUser"
+            [editFlag]="editFlag"
+            [user]="user"></app-user>
+</div>

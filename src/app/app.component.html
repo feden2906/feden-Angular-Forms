@@ -1,3 +1,18 @@
+<div class="wrapper">
+  <app-users class="w50" (bubbleUp)="setChosenUser($event)" [editFlag]="editFlag" ></app-users>
+  <div class="w50" >
+    <app-full-user *ngIf="!editFlag && fullUser" [fullUser]="fullUser" (bubbleUp)="setChosenUser($event)"></app-full-user>
+    <app-edit-form *ngIf="editFlag && fullUser" [editingUser]="fullUser" (bubbleUp)="setChosenUser($event)"></app-edit-form>
+  </div>
+
+</div>
+
+
+
+
+
+
+
 <!--основанный на шаблонах (template-driven)-->
 
 <!--<form #form="ngForm" (ngSubmit)="submit(form)">-->
@@ -12,8 +27,8 @@
 
 <!--реактивный (reactive)-->
 
-<form [formGroup]="myForm">
-  <input [formControl]="name">
-  <input [formControl]="age">
-  <button>save</button>
-</form>
+<!--<form [formGroup]="myForm">-->
+<!--  <input [formControl]="name">-->
+<!--  <input [formControl]="age">-->
+<!--  <button>save</button>-->
+<!--</form>-->
