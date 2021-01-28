@@ -1,0 +1,19 @@
+<!--основанный на шаблонах (template-driven)-->
+
+<!--<form #form="ngForm" (ngSubmit)="submit(form)">-->
+<!--<input [class.error]="!form.controls.name?.valid" [(ngModel)]="user.name" name="name" minlength="10">-->
+<!--  <div class="errorMsg" *ngIf="!form.controls.name?.valid">name must be 10 symbols at least</div>-->
+<!--  <input [class.error]="!form.controls.age?.valid" [(ngModel)]="user.age" name="age">-->
+<!--  <div class="errorMsg" *ngIf="!form.controls.age?.valid">age must be from 0 to 100 years</div>-->
+<!--<button>send</button>-->
+<!--</form>-->
+
+
+
+<!--реактивный (reactive)-->
+
+<form [formGroup]="myForm">
+  <input [formControl]="name">
+  <input [formControl]="age">
+  <button>save</button>
+</form>
