@@ -35,6 +35,7 @@ export class AppComponent {
 
   setChosenUser(user): void {
     if (user === 'edit') {
+      console.log(2);
       this.editFlag = true;
     } else if (user === 'close') {
       this.editFlag = false;

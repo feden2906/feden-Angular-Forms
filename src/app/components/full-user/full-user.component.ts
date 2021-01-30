@@ -19,6 +19,7 @@ export class FullUserComponent implements OnInit {
   }
 
   editUserInfo(): void {
+    console.log(1);
     this.bubbleUp.emit('edit');
   }
 
