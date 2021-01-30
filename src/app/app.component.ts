@@ -40,6 +40,7 @@ export class AppComponent {
     } else if (user === 'close') {
       this.editFlag = false;
     } else {
+      this.editFlag = false;
       this.fullUser = user;
     }
   }

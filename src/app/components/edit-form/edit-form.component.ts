@@ -99,7 +99,7 @@ export class EditFormComponent implements OnInit {
         bs,
       }
     };
-    console.log(editedUser);
-    this.bubbleUp.emit('close');
+    // console.log(editedUser);
+    this.bubbleUp.emit(editedUser);
   }
 }
