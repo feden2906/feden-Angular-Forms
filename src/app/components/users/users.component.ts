@@ -24,7 +24,6 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.users = JSON.parse(localStorage.getItem('users'));
     if (!this.users) {
-    // console.log('dfgh');
       this.userService.getAllUsers().subscribe(value => {
         this.users = value;
         localStorage.setItem('users', JSON.stringify(value));
