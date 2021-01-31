@@ -11,6 +11,9 @@
   width: 65%;
   height: 21px;
 }
+.h2 {
+  margin-top: 12px;
+}
 .ml20 {margin-left: 20px;}
 .ml40 {margin-left: 40px;}
 .mt10 {margin-top: 10px;}
@@ -46,3 +49,21 @@
   background-color: forestgreen;
 }
 
+
+
+
+/*Errors DIV*/
+.errorMSG {
+  font-size: 12px;
+  text-align: end;
+  color: red;
+  margin: -3px 15px 3px;
+}
+.errorLabel {
+  color: red;
+}
+.errorInput {
+  font-weight: bold;
+  color: red;
+  border: 2px solid red;
+}
