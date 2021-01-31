@@ -106,7 +106,7 @@ export class EditFormComponent implements OnInit {
     let error = null;
     const allUsers = JSON.parse(localStorage.getItem('users'));
     allUsers.map(({id, username}) => {
-      if (inputData.value === username) {
+      if (inputData.value === username) { // TODO  не враховуэться що користувач якого редагуэмо маэ такий Username //
         error = {error: true, msg: `username ${inputData.value} already booked`};
       }
     });
