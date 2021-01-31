@@ -1,4 +1,4 @@
-<form [formGroup]="editUserForm" class="formWrapper">
+<form [formGroup]="editUserForm" (ngSubmit)="saveForm(editUserForm)" class="formWrapper">
 
   <div>
     <h2 class="labelEdit"><b>name:</b>
@@ -44,7 +44,7 @@
 
 
   <div class="btnWrapper">
-    <button (click)="saveForm()" class="userFullBtnGreen">save</button>
+    <button [disabled]="!editUserForm.valid" class="userFullBtnGreen">save</button>
     <button (click)="closeForm()" class="userFullBtnRed">close</button>
   </div>
 </form>
