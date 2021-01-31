@@ -13,6 +13,7 @@
     </app-full-user>
     <app-edit-form *ngIf="editFlag && fullUser"
                    [editingUser]="fullUser"
+                   [allUsers]="users"
                    (bubbleUp)="setChosenUser($event)">
     </app-edit-form>
   </div>
