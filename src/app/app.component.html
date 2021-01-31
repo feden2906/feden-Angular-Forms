@@ -1,16 +1,23 @@
 <div class="wrapper">
-  <app-users class="w50" (bubbleUp)="setChosenUser($event)" [editFlag]="editFlag" ></app-users>
+  <app-users class="w50"
+             (bubbleUp)="setChosenUser($event)"
+             [editFlag]="editFlag"
+             [users]="users"
+             [chosenUser]="fullUser"
+  ></app-users>
+
   <div class="w50" >
-    <app-full-user *ngIf="!editFlag && fullUser" [fullUser]="fullUser" (bubbleUp)="setChosenUser($event)"></app-full-user>
-    <app-edit-form *ngIf="editFlag && fullUser" [editingUser]="fullUser" (bubbleUp)="setChosenUser($event)"></app-edit-form>
+    <app-full-user *ngIf="!editFlag && fullUser"
+                   [fullUser]="fullUser"
+                   (bubbleUp)="setChosenUser($event)">
+    </app-full-user>
+    <app-edit-form *ngIf="editFlag && fullUser"
+                   [editingUser]="fullUser"
+                   (bubbleUp)="setChosenUser($event)">
+    </app-edit-form>
   </div>
 
 </div>
-
-
-
-
-
 
 
 <!--основанный на шаблонах (template-driven)-->

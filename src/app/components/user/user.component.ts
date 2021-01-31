@@ -16,11 +16,9 @@ export class UserComponent implements OnInit {
   @Output()
   bubbleUp = new EventEmitter();
 
-  constructor() {
-  }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   clickOnUser(): void {
     this.bubbleUp.emit(this.user);

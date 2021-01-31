@@ -12,14 +12,11 @@ export class FullUserComponent implements OnInit {
   @Output()
   bubbleUp = new EventEmitter();
 
-  constructor() {
-  }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   editUserInfo(): void {
-    console.log(1);
     this.bubbleUp.emit('edit');
   }
 

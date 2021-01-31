@@ -1,8 +1,9 @@
 <form [formGroup]="editUserForm" class="formWrapper">
 
   <div>
-
-    <h2 class="center">{{editingUser.name}}</h2>
+    <h2 class="labelEdit"><b>name:</b>
+      <input formControlName="name">
+    </h2>
     <label class="labelEdit"><b>username:</b>
       <input formControlName="username">
     </label>

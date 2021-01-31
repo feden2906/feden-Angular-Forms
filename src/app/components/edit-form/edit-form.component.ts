@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-edit-form',
@@ -15,9 +15,7 @@ export class EditFormComponent implements OnInit {
 
   editUserForm: FormGroup;
 
-
-  constructor(private formBuilder: FormBuilder) {
-  }
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -27,10 +25,9 @@ export class EditFormComponent implements OnInit {
     this.bubbleUp.emit('close');
   }
 
-
   private initForm(): void {
     this.editUserForm = this.formBuilder.group({
-      name: this.editingUser.username,
+      name: this.editingUser.name,
       username: this.editingUser.username,
       email: this.editingUser.email,
       street: this.editingUser.address.street,
@@ -48,18 +45,19 @@ export class EditFormComponent implements OnInit {
   }
 
   saveForm(): void {
-    const {name, username, email, street, suite, city, zipcode, lat, lng, phone, website, companyName, catchPhrase, bs} = this.editUserForm.value;
+    const {
+      name, username, email, street, suite, city, zipcode, lat, lng, phone, website, companyName, catchPhrase, bs
+    } = this.editUserForm.value;
+
     const editedUser = {
+      id: this.editingUser.id,
       name, username, email, phone, website,
       address: {street, suite, city, zipcode,
         geo: {lat, lng}
       },
-      company: {
-        name: companyName,
-        catchPhrase,
-        bs,
-      }
+      company: {name: companyName, catchPhrase, bs}
     };
+
     this.bubbleUp.emit(editedUser);
   }
 }
