@@ -30,7 +30,7 @@ export class EditFormComponent implements OnInit {
 
   private initForm(): void {
     this.editUserForm = this.formBuilder.group({
-      name: new FormControl(this.editingUser.name, [Validators.required, this.badWorldVal]),
+      name: new FormControl(this.editingUser.name, [Validators.required, this.badWorldVal, this.minLengthVal, this.mexLengthVal]),
       username: new FormControl(this.editingUser.username, [this.badWorldVal]),
       email: new FormControl(this.editingUser.email, [this.badWorldVal]),
       street: new FormControl(this.editingUser.address.street, [this.badWorldVal]),
@@ -85,7 +85,23 @@ export class EditFormComponent implements OnInit {
     return error;
   }
 
-//   minLengthVal(inputData: AbstractControl): Errorw {
-//     return { error: false, msg: `is present`};
-//   }
+  minLengthVal(inputData: AbstractControl): Errorw {
+    let error = null;
+
+    if (inputData.value.length < 5) {
+      error = {error: true, msg: 'minimum number of characters is 5'};
+    }
+
+    return error;
+  }
+
+  mexLengthVal(inputData: AbstractControl): Errorw {
+    let error = null;
+
+    if (inputData.value.length > 30) {
+      error = {error: true, msg: 'maximum number of characters is 30'};
+    }
+
+    return error;
+  }
 }
