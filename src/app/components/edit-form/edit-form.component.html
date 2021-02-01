@@ -1,4 +1,4 @@
-<form [formGroup]="editUserForm" (ngSubmit)="saveForm(editUserForm)" class="formWrapper">
+<form [formGroup]="editUserForm" (ngSubmit)="saveForm(editUserForm)" class="formWrapper" [class.validForm]="editUserForm.valid">
 
   <div>
     <label class="labelEdit h2" [class.errorLabel]="editUserForm.controls.name.touched && editUserForm.controls.name.invalid"><b>name:</b>
@@ -80,7 +80,9 @@
 
 
   <div class="btnWrapper">
-    <button [disabled]="!editUserForm.valid" class="userFullBtnGreen">save</button>
+    <button
+            class="userFullBtnGreen">save</button>
+<!--      [disabled]="!editUserForm.valid" -->
     <button (click)="closeForm()" class="userFullBtnRed">close</button>
   </div>
 </form>

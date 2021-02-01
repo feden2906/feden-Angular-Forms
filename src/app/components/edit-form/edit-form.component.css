@@ -51,6 +51,9 @@
 
 
 
+.validForm {
+  background-color: #b3d2b3;
+}
 
 /*Errors DIV*/
 .errorMSG {

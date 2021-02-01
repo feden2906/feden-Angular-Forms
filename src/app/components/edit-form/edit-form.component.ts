@@ -32,16 +32,16 @@ export class EditFormComponent implements OnInit {
 
   private initForm(): void {
     this.editUserForm = this.formBuilder.group({
-      name: new FormControl(this.editingUser.name, [Validators.required, this.badWorldVal, this.minLengthVal, this.mexLengthVal]),
-      username: new FormControl(this.editingUser.username, [Validators.required, this.badWorldVal, this.uniqueUsernameVal]),
-      email: new FormControl(this.editingUser.email, [Validators.required, this.badWorldVal]),
+      name: new FormControl(this.editingUser.name, [this.requiredVal, this.badWorldVal, this.minLengthVal, this.mexLengthVal]),
+      username: new FormControl(this.editingUser.username, [this.requiredVal, this.badWorldVal, this.uniqueUsernameVal, this.minLengthVal, this.mexLengthVal]),
+      email: new FormControl(this.editingUser.email, [this.requiredVal, this.emailVal, this.badWorldVal]),
       street: new FormControl(this.editingUser.address.street, [this.badWorldVal]),
       suite: new FormControl(this.editingUser.address.suite, [this.badWorldVal]),
       city: new FormControl(this.editingUser.address.city, [this.badWorldVal]),
       zipcode: new FormControl(this.editingUser.address.zipcode, [this.badWorldVal]),
       lat: new FormControl(this.editingUser.address.geo.lat, [this.badWorldVal]),
       lng: new FormControl(this.editingUser.address.geo.lng, [this.badWorldVal]),
-      phone: new FormControl(this.editingUser.phone, [Validators.required, this.badWorldVal]),
+      phone: new FormControl(this.editingUser.phone, [this.requiredVal, this.badWorldVal]),
       website: new FormControl(this.editingUser.website, [this.badWorldVal]),
       companyName: new FormControl(this.editingUser.company.name, [this.badWorldVal]),
       catchPhrase: new FormControl(this.editingUser.company.catchPhrase, [this.badWorldVal]),
@@ -50,6 +50,7 @@ export class EditFormComponent implements OnInit {
   }
 
   saveForm(editUserForm): void {
+    editUserForm.markAllAsTouched();
     if (editUserForm.status === 'VALID') {
       const {
         name, username, email, street, suite, city, zipcode, lat, lng, phone, website, companyName, catchPhrase, bs
@@ -72,7 +73,6 @@ export class EditFormComponent implements OnInit {
 
   // V A L I D A T O R S //
 
-  // -- bad world //
   badWorldVal(inputData: AbstractControl): Errorw {
     const arrBadWords = [
       'архипиздрит', 'басран', 'бздение', 'бздеть', 'бздех', 'бзднуть', 'бздун', 'бздунья', 'бздюха', 'бикса', 'блежник', 'блудилище', 'бляд', 'блябу', 'блябуду', 'блядун', 'блядунья', 'блядь', 'блядюга', 'взьебка', 'волосянка', 'взьебывать', 'выблядок', 'выблядыш', 'выебать', 'выеть', 'выпердеть', 'высраться', 'выссаться', 'говенка', 'говенный', 'говешка', 'говназия', 'говнецо', 'говно', 'говноед', 'говночист', 'говнюк', 'говнюха', 'говнядина', 'говняк', 'говняный', 'говнять', 'гондон', 'дермо', 'долбоеб', 'дрисня', 'дрист', 'дристать', 'дристануть', 'дристун', 'дристуха', 'дрочена', 'дрочила', 'дрочилка', 'дрочить', 'дрочка', 'ебало', 'ебальник', 'ебануть', 'ебаный', 'ебарь', 'ебатория', 'ебать', 'ебаться', 'ебец', 'ебливый', 'ебля', 'ебнуть', 'ебнуться', 'ебня', 'ебун', 'елда', 'елдак', 'елдачить', 'заговнять', 'задристать', 'задрока', 'заеба', 'заебанец', 'заебать', 'заебаться', 'заебываться', 'заеть', 'залупа', 'залупаться', 'залупить', 'залупиться', 'замудохаться', 'засерун', 'засеря', 'засерать', 'засирать', 'засранец', 'засрун', 'захуячить', 'злоебучий', 'изговнять', 'изговняться', 'кляпыжиться', 'курва', 'курвенок', 'курвин', 'курвяжник', 'курвяжница', 'курвяжный', 'манда', 'мандавошка', 'мандей', 'мандеть', 'мандища', 'мандюк', 'минет', 'минетчик', 'минетчица', 'мокрохвостка', 'мокрощелка', 'мудак', 'муде', 'мудеть', 'мудила', 'мудистый', 'мудня', 'мудоеб', 'мудозвон', 'муйня', 'набздеть', 'наговнять', 'надристать', 'надрочить', 'наебать', 'наебнуться', 'наебывать', 'нассать', 'нахезать', 'нахуйник', 'насцать', 'обдристаться', 'обдристаться', 'обосранец', 'обосрать', 'обосцать', 'обосцаться', 'обсирать', 'опизде', 'отпиздячить', 'отпороть', 'отъеть', 'охуевательский', 'охуевать', 'охуевающий', 'охуеть', 'охуительный', 'охуячивать', 'охуячить', 'педрик', 'пердеж', 'пердение', 'пердеть', 'пердильник', 'перднуть', 'пердун', 'пердунец', 'пердунина', 'пердунья', 'пердуха', 'пердь', 'передок', 'пернуть', 'пидор', 'пизда', 'пиздануть', 'пизденка', 'пиздеть', 'пиздить', 'пиздища', 'пиздобратия', 'пиздоватый', 'пиздорванец', 'пиздорванка', 'пиздострадатель', 'пиздун', 'пиздюга', 'пиздюк', 'пиздячить', 'писять', 'питишка', 'плеха', 'подговнять', 'подъебнуться', 'поебать', 'поеть', 'попысать', 'посрать', 'поставить', 'поцоватый', 'презерватив', 'проблядь', 'проебать', 'промандеть', 'промудеть', 'пропиздеть', 'пропиздячить', 'пысать', 'разъеба', 'разъебай', 'распиздай', 'распиздеться', 'распиздяй', 'распроеть', 'растыка', 'сговнять', 'секель', 'серун', 'серька', 'сика', 'сикать', 'сикель', 'сирать', 'сирывать', 'скурвиться', 'скуреха', 'скурея', 'скуряга', 'скуряжничать', 'спиздить', 'срака', 'сраный', 'сранье', 'срать', 'срун', 'ссака', 'ссаки', 'ссать', 'старпер', 'струк', 'суходрочка', 'сука', 'сцавинье', 'сцака', 'сцаки', 'сцание', 'сцать', 'сциха', 'сцуль', 'сцыха', 'сыкун', 'титечка', 'титечный', 'титка', 'титочка', 'титька', 'трипер', 'триппер', 'уеть', 'усраться', 'усцаться', 'фик', 'фуй', 'хезать', 'хер', 'херня', 'херовина', 'херовый', 'хитрожопый', 'хлюха', 'хуевина', 'хуевый', 'хуек', 'хуепромышленник', 'хуерик', 'хуесос', 'хуище', 'хуй', 'хуйня', 'хуйрик', 'хуякать', 'хуякнуть', 'целка', 'шлюха', 'fuck'
@@ -98,6 +98,22 @@ export class EditFormComponent implements OnInit {
     let error = null;
     if (inputData.value.length > 30) {
       error = {error: true, msg: 'maximum number of characters is 30'};
+    }
+    return error;
+  }
+
+  requiredVal(inputData: AbstractControl): Errorw {
+    let error = null;
+    if (inputData.value === '') {
+      error = {error: true, msg: 'cannot be empty'};
+    }
+    return error;
+  }
+
+  emailVal(inputData: AbstractControl): Errorw {
+    let error = null;
+    if (!inputData.value.includes('@')) {
+      error = {error: true, msg: 'mast type correct email'};
     }
     return error;
   }
