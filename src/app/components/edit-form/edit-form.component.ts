@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {Errorw} from '../../models/error';
 
 
@@ -32,18 +32,18 @@ export class EditFormComponent implements OnInit {
 
   private initForm(): void {
     this.editUserForm = this.formBuilder.group({
-      name: new FormControl(this.editingUser.name, [this.requiredVal, this.badWorldVal, this.minLengthVal, this.mexLengthVal]),
-      username: new FormControl(this.editingUser.username, [this.requiredVal, this.badWorldVal, this.uniqueUsernameVal, this.minLengthVal, this.mexLengthVal]),
+      name: new FormControl(this.editingUser.name, [this.requiredVal, this.badWorldVal, this.minLengthVal, this.maxLengthVal]),
+      username: new FormControl(this.editingUser.username, [this.requiredVal, this.badWorldVal, this.uniqueUsernameVal, this.minLengthVal, this.maxLengthVal]),
       email: new FormControl(this.editingUser.email, [this.requiredVal, this.emailVal, this.badWorldVal]),
-      street: new FormControl(this.editingUser.address.street, [this.badWorldVal]),
-      suite: new FormControl(this.editingUser.address.suite, [this.badWorldVal]),
+      street: new FormControl(this.editingUser.address.street, [this.badWorldVal, this.minLengthVal, this.maxLengthVal]),
+      suite: new FormControl(this.editingUser.address.suite, [this.badWorldVal, this.minLengthVal, this.maxLengthVal]),
       city: new FormControl(this.editingUser.address.city, [this.badWorldVal]),
       zipcode: new FormControl(this.editingUser.address.zipcode, [this.badWorldVal]),
       lat: new FormControl(this.editingUser.address.geo.lat, [this.badWorldVal]),
       lng: new FormControl(this.editingUser.address.geo.lng, [this.badWorldVal]),
       phone: new FormControl(this.editingUser.phone, [this.requiredVal, this.badWorldVal]),
-      website: new FormControl(this.editingUser.website, [this.badWorldVal]),
-      companyName: new FormControl(this.editingUser.company.name, [this.badWorldVal]),
+      website: new FormControl(this.editingUser.website, [this.badWorldVal, this.minLengthVal]),
+      companyName: new FormControl(this.editingUser.company.name, [this.badWorldVal, this.minLengthVal, this.maxLengthVal]),
       catchPhrase: new FormControl(this.editingUser.company.catchPhrase, [this.badWorldVal]),
       bs: new FormControl(this.editingUser.company.bs, [this.badWorldVal])
     });
@@ -94,7 +94,7 @@ export class EditFormComponent implements OnInit {
     return error;
   }
 
-  mexLengthVal(inputData: AbstractControl): Errorw {
+  maxLengthVal(inputData: AbstractControl): Errorw {
     let error = null;
     if (inputData.value.length > 30) {
       error = {error: true, msg: 'maximum number of characters is 30'};
