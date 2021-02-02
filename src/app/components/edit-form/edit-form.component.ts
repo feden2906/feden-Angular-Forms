@@ -33,7 +33,8 @@ export class EditFormComponent implements OnInit {
   private initForm(): void {
     this.editUserForm = this.formBuilder.group({
       name: new FormControl(this.editingUser.name, [this.requiredVal, this.badWorldVal, this.minLengthVal, this.maxLengthVal]),
-      username: new FormControl(this.editingUser.username, [this.requiredVal, this.badWorldVal, this.uniqueUsernameVal, this.minLengthVal, this.maxLengthVal]),
+      username: new FormControl(this.editingUser.username,
+        [this.requiredVal, this.badWorldVal, this.uniqueUsernameVal.bind(this), this.minLengthVal, this.maxLengthVal]),
       email: new FormControl(this.editingUser.email, [this.requiredVal, this.emailVal, this.badWorldVal]),
       street: new FormControl(this.editingUser.address.street, [this.badWorldVal, this.minLengthVal, this.maxLengthVal]),
       suite: new FormControl(this.editingUser.address.suite, [this.badWorldVal, this.minLengthVal, this.maxLengthVal]),
@@ -120,9 +121,9 @@ export class EditFormComponent implements OnInit {
 
   uniqueUsernameVal(inputData: AbstractControl): Errorw {
     let error = null;
-    const allUsers = JSON.parse(localStorage.getItem('users'));
-    allUsers.map(({id, username}) => {
-      if (inputData.value === username) { // TODO  не враховуэться що користувач якого редагуэмо маэ такий Username //
+    const findUser = this.allUsers.find(x => inputData.value === x.username);
+    this.allUsers.map(({id, username}) => {
+      if (inputData.value === username && findUser.id !== id) { // TODO  не враховуэться що користувач якого редагуэмо маэ такий Username //
         error = {error: true, msg: `username ${inputData.value} already booked`};
       }
     });
