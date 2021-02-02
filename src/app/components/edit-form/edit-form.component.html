@@ -1,52 +1,88 @@
-<form [formGroup]="myForm" class="formWrapper">
+<form [formGroup]="editUserForm" (ngSubmit)="saveForm(editUserForm)" class="formWrapper" [class.validForm]="editUserForm.valid">
 
   <div>
-
-    <h2 class="center">{{editingUser.name}}</h2>
-    <label class="labelEdit"><b>name:</b>
-      <input formControlName="name"/>
+    <label class="labelEdit h2" [class.errorLabel]="editUserForm.controls.name.touched && editUserForm.controls.name.invalid"><b>name:</b>
+      <input formControlName="name" [class.errorInput]="editUserForm.controls.name.touched && editUserForm.controls.name.invalid">
     </label>
-    <label class="labelEdit"><b>username:</b>
-      <input formControlName="username"/>
+    <div class="errorMSG" *ngIf="editUserForm.controls.name.touched && editUserForm.controls.name.invalid">{{editUserForm.controls.name.errors.msg}}</div>
+
+    <label class="labelEdit" [class.errorLabel]="editUserForm.controls.username.touched && editUserForm.controls.username.invalid"><b>username:</b>
+      <input formControlName="username" [class.errorInput]="editUserForm.controls.username.touched && editUserForm.controls.username.invalid">
     </label>
-<!--    <label class="labelEdit"><b>email:</b>-->
-<!--      <input [formControl]="email">-->
-<!--    </label>-->
+    <div class="errorMSG" *ngIf="editUserForm.controls.username.touched && editUserForm.controls.username.invalid">{{editUserForm.controls.username.errors.msg}}</div>
 
-<!--    <div><b>address:</b></div>-->
-<!--    <label class="labelEdit"><b class="ml20">street:</b>-->
-<!--      <input [formControl]="street"></label>-->
-<!--    <label class="labelEdit"><b class="ml20">suite:</b>-->
-<!--      <input [formControl]="suite"></label>-->
-<!--    <label class="labelEdit"><b class="ml20">city:</b>-->
-<!--      <input [formControl]="city"></label>-->
-<!--    <label class="labelEdit"><b class="ml20">zipcode:</b>-->
-<!--      <input [formControl]="zipcode"></label>-->
+    <label class="labelEdit" [class.errorLabel]="editUserForm.controls.email.touched && editUserForm.controls.email.invalid"><b>email:</b>
+      <input formControlName="email" [class.errorInput]="editUserForm.controls.email.touched && editUserForm.controls.email.invalid">
+    </label>
+    <div class="errorMSG" *ngIf="editUserForm.controls.email.touched && editUserForm.controls.email.invalid">{{editUserForm.controls.email.errors.msg}}</div>
 
-<!--    <div><b class="ml20">location:</b></div>-->
-<!--    <label class="labelEdit"><b class="ml40">lat:</b>-->
-<!--      <input [formControl]="lat"></label>-->
-<!--    <label class="labelEdit"><b class="ml40">lng:</b>-->
-<!--      <input [formControl]="lng"></label>-->
+    <div><b>address:</b></div>
+    <label class="labelEdit" [class.errorLabel]="editUserForm.controls.street.touched && editUserForm.controls.street.invalid"><b class="ml20">street:</b>
+      <input formControlName="street" [class.errorInput]="editUserForm.controls.street.touched && editUserForm.controls.street.invalid">
+    </label>
+    <div class="errorMSG" *ngIf="editUserForm.controls.street.touched && editUserForm.controls.street.invalid">{{editUserForm.controls.street.errors.msg}}</div>
 
-<!--    <label class="labelEdit"><b>phone:</b>-->
-<!--      <input [formControl]="phone"></label>-->
-<!--    <label class="labelEdit"><b>website:</b>-->
-<!--      <input [formControl]="website"></label>-->
+    <label class="labelEdit" [class.errorLabel]="editUserForm.controls.suite.touched && editUserForm.controls.suite.invalid"><b class="ml20">suite:</b>
+      <input formControlName="suite" [class.errorInput]="editUserForm.controls.suite.touched && editUserForm.controls.suite.invalid">
+    </label>
+    <div class="errorMSG" *ngIf="editUserForm.controls.suite.touched && editUserForm.controls.suite.invalid">{{editUserForm.controls.suite.errors.msg}}</div>
 
-<!--    <div><b>company:</b></div>-->
-<!--    <label class="labelEdit"><b class="ml20">name:</b>-->
-<!--      <input [formControl]="companyName"></label>-->
-<!--    <label class="labelEdit"><b class="ml20">catchPhrase:</b>-->
-<!--      <input [formControl]="catchPhrase"></label>-->
-<!--    <label class="labelEdit"><b class="ml20">bs:</b>-->
-<!--      <input [formControl]="bs"></label>-->
+    <label class="labelEdit" [class.errorLabel]="editUserForm.controls.city.touched && editUserForm.controls.city.invalid"><b class="ml20">city:</b>
+      <input formControlName="city" [class.errorInput]="editUserForm.controls.city.touched && editUserForm.controls.city.invalid">
+    </label>
+    <div class="errorMSG" *ngIf="editUserForm.controls.city.touched && editUserForm.controls.city.invalid">{{editUserForm.controls.city.errors.msg}}</div>
+
+    <label class="labelEdit" [class.errorLabel]="editUserForm.controls.zipcode.touched && editUserForm.controls.zipcode.invalid"><b class="ml20">zipcode:</b>
+      <input formControlName="zipcode" [class.errorInput]="editUserForm.controls.zipcode.touched && editUserForm.controls.zipcode.invalid">
+    </label>
+    <div class="errorMSG" *ngIf="editUserForm.controls.zipcode.touched && editUserForm.controls.zipcode.invalid">{{editUserForm.controls.zipcode.errors.msg}}</div>
+
+
+    <div><b class="ml20">location:</b></div>
+    <label class="labelEdit" [class.errorLabel]="editUserForm.controls.lat.touched && editUserForm.controls.lat.invalid"><b class="ml40">lat:</b>
+      <input formControlName="lat" [class.errorInput]="editUserForm.controls.lat.touched && editUserForm.controls.lat.invalid">
+    </label>
+    <div class="errorMSG" *ngIf="editUserForm.controls.lat.touched && editUserForm.controls.lat.invalid">{{editUserForm.controls.lat.errors.msg}}</div>
+
+    <label class="labelEdit" [class.errorLabel]="editUserForm.controls.lng.touched && editUserForm.controls.lng.invalid"><b class="ml40">lng:</b>
+      <input formControlName="lng" [class.errorInput]="editUserForm.controls.lng.touched && editUserForm.controls.lng.invalid">
+    </label>
+    <div class="errorMSG" *ngIf="editUserForm.controls.lng.touched && editUserForm.controls.lng.invalid">{{editUserForm.controls.lng.errors.msg}}</div>
+
+    <label class="labelEdit" [class.errorLabel]="editUserForm.controls.phone.touched && editUserForm.controls.phone.invalid"><b>phone:</b>
+      <input formControlName="phone" [class.errorInput]="editUserForm.controls.phone.touched && editUserForm.controls.phone.invalid">
+    </label>
+    <div class="errorMSG" *ngIf="editUserForm.controls.phone.touched && editUserForm.controls.phone.invalid">{{editUserForm.controls.phone.errors.msg}}</div>
+
+    <label class="labelEdit" [class.errorLabel]="editUserForm.controls.website.touched && editUserForm.controls.website.invalid"><b>website:</b>
+      <input formControlName="website" [class.errorInput]="editUserForm.controls.website.touched && editUserForm.controls.website.invalid">
+    </label>
+    <div class="errorMSG" *ngIf="editUserForm.controls.website.touched && editUserForm.controls.website.invalid">{{editUserForm.controls.website.errors.msg}}</div>
+
+
+    <div><b>company:</b></div>
+    <label class="labelEdit" [class.errorLabel]="editUserForm.controls.companyName.touched && editUserForm.controls.companyName.invalid"><b class="ml20">name:</b>
+      <input formControlName="companyName" [class.errorInput]="editUserForm.controls.companyName.touched && editUserForm.controls.companyName.invalid">
+    </label>
+    <div class="errorMSG" *ngIf="editUserForm.controls.companyName.touched && editUserForm.controls.companyName.invalid">{{editUserForm.controls.companyName.errors.msg}}</div>
+
+    <label class="labelEdit" [class.errorLabel]="editUserForm.controls.catchPhrase.touched && editUserForm.controls.catchPhrase.invalid"><b class="ml20">catchPhrase:</b>
+      <input formControlName="catchPhrase" [class.errorInput]="editUserForm.controls.catchPhrase.touched && editUserForm.controls.catchPhrase.invalid">
+    </label>
+    <div class="errorMSG" *ngIf="editUserForm.controls.catchPhrase.touched && editUserForm.controls.catchPhrase.invalid">{{editUserForm.controls.catchPhrase.errors.msg}}</div>
+
+    <label class="labelEdit" [class.errorLabel]="editUserForm.controls.bs.touched && editUserForm.controls.bs.invalid"><b class="ml20">bs:</b>
+      <input formControlName="bs" [class.errorInput]="editUserForm.controls.bs.touched && editUserForm.controls.bs.invalid">
+    </label>
+    <div class="errorMSG" *ngIf="editUserForm.controls.bs.touched && editUserForm.controls.bs.invalid">{{editUserForm.controls.bs.errors.msg}}</div>
 
   </div>
 
 
   <div class="btnWrapper">
-    <button (click)="1" class="userFullBtnGreen">save</button>
+    <button
+            class="userFullBtnGreen">save</button>
+<!--      [disabled]="!editUserForm.valid" -->
     <button (click)="closeForm()" class="userFullBtnRed">close</button>
   </div>
 </form>
